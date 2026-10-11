@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Environment files and secrets
+.env
+.env.*
+*.env
+!.env.example
+!*.env.example
+
+# Build and coverage outputs
+dist/
+dist-ssr/
+coverage/
+coverage.json
+typechain/
+typechain-types/
+
+# Hardhat cache and artifacts
+cache/
+artifacts/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
