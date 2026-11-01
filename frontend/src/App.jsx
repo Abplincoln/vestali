@@ -13,6 +13,9 @@ import {
   BOHR_CHAIN_ID_HEX,
   BOHR_RPC_URL,
   BOHR_NETWORK_PARAMS,
+  IS_MAINNET,
+  NETWORK_NAME,
+  NETWORK_SHORT_NAME,
 } from "./contracts/config";
 import { parseContractError } from "./utils/errors";
 import { formatBOT } from "./utils/formatters";
@@ -37,7 +40,7 @@ export default function App() {
     return parseContractError(err);
   };
 
-  // Switch to Bohr Testnet
+  // Switch to configured network (BOT Chain Mainnet by default)
   const handleSwitchNetwork = async () => {
     if (!window.ethereum) {
       alert("MetaMask is not installed. Please install MetaMask to use Vestali.");
@@ -58,7 +61,7 @@ export default function App() {
         } catch (addError) {
           setNotification({
             type: "error",
-            message: `Could not add Bohr Testnet: ${addError.message}`,
+            message: `Could not add ${NETWORK_NAME}: ${addError.message}`,
           });
         }
       } else {
@@ -116,6 +119,19 @@ export default function App() {
 
   // Load campaigns from contract
   const loadCampaigns = useCallback(async () => {
+    if (!VESTALI_CONTRACT_ADDRESS) {
+      setIsLoadingCampaigns(false);
+      setCampaigns([]);
+      if (IS_MAINNET) {
+        setNotification({
+          type: "info",
+          message:
+            "Mainnet contract address is not configured. Please deploy to BOT Chain Mainnet and set VITE_VESTALI_CONTRACT_ADDRESS in your environment.",
+        });
+      }
+      return;
+    }
+
     try {
       setIsLoadingCampaigns(true);
 
@@ -237,6 +253,13 @@ export default function App() {
       await handleSwitchNetwork();
       return;
     }
+    if (!VESTALI_CONTRACT_ADDRESS) {
+      setNotification({
+        type: "error",
+        message: "Smart contract address is not configured for this network.",
+      });
+      return;
+    }
 
     try {
       setActionPending(true);
@@ -254,7 +277,7 @@ export default function App() {
 
       setNotification({
         type: "pending",
-        message: "Waiting for block confirmation on Bohr Testnet...",
+        message: `Waiting for block confirmation on ${NETWORK_SHORT_NAME}...`,
         hash: tx.hash,
       });
 
@@ -288,6 +311,13 @@ export default function App() {
     }
     if (Number(chainId) !== BOHR_CHAIN_ID_DECIMAL) {
       await handleSwitchNetwork();
+      return;
+    }
+    if (!VESTALI_CONTRACT_ADDRESS) {
+      setNotification({
+        type: "error",
+        message: "Smart contract address is not configured for this network.",
+      });
       return;
     }
 
@@ -451,7 +481,7 @@ export default function App() {
 
       setNotification({
         type: "pending",
-        message: "Transaction broadcast. Confirming on Bohr Testnet...",
+        message: `Transaction broadcast. Confirming on ${NETWORK_SHORT_NAME}...`,
         hash: tx.hash,
       });
 
@@ -484,6 +514,13 @@ export default function App() {
     }
     if (Number(chainId) !== BOHR_CHAIN_ID_DECIMAL) {
       await handleSwitchNetwork();
+      return;
+    }
+    if (!VESTALI_CONTRACT_ADDRESS) {
+      setNotification({
+        type: "error",
+        message: "Smart contract address is not configured for this network.",
+      });
       return;
     }
 
@@ -563,6 +600,13 @@ export default function App() {
       await handleSwitchNetwork();
       return;
     }
+    if (!VESTALI_CONTRACT_ADDRESS) {
+      setNotification({
+        type: "error",
+        message: "Smart contract address is not configured for this network.",
+      });
+      return;
+    }
 
     try {
       setActionPending(true);
@@ -605,7 +649,7 @@ export default function App() {
 
       setNotification({
         type: "pending",
-        message: "Processing refund on Bohr Testnet...",
+        message: `Processing refund on ${NETWORK_SHORT_NAME}...`,
         hash: tx.hash,
       });
 
@@ -776,7 +820,7 @@ export default function App() {
           {isLoadingCampaigns && campaigns.length === 0 ? (
             <div className="loading-state">
               <div className="loading-spinner"></div>
-              <p>Fetching campaigns from Bohr Testnet...</p>
+              <p>Fetching campaigns from {NETWORK_NAME}...</p>
             </div>
           ) : filteredCampaigns.length === 0 ? (
             <div className="empty-state">
@@ -785,7 +829,7 @@ export default function App() {
               <p>
                 {searchQuery || filter !== "all"
                   ? "Try clearing your search query or switching filters."
-                  : "Be the first creator to launch a crowdfunding campaign on Bohr Testnet!"}
+                  : `Be the first creator to launch a crowdfunding campaign on ${NETWORK_NAME}!`}
               </p>
               <button
                 type="button"

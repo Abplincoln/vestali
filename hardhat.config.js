@@ -26,5 +26,15 @@ module.exports = {
       chainId: 968,
       accounts: privateKey ? [privateKey] : [],
     },
+    botMainnet: {
+      url: "https://rpc.botchain.ai",
+      chainId: 677,
+      accounts: privateKey ? [privateKey] : [],
+    },
+    mainnet: {
+      url: "https://rpc.botchain.ai",
+      chainId: 677,
+      accounts: privateKey ? [privateKey] : [],
+    },
   },
 };

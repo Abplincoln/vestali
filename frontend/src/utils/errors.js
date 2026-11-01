@@ -129,7 +129,7 @@ export function parseContractError(err) {
     err.code === -32603 ||
     err?.info?.error?.code === -32603
   ) {
-    return "Internal JSON-RPC error from Bohr node. This typically indicates the transaction would revert on-chain (e.g. contribution exceeds remaining goal or deadline passed) or gas estimation failed.";
+    return "Internal JSON-RPC error from RPC node. This typically indicates the transaction would revert on-chain (e.g. contribution exceeds remaining goal or deadline passed) or gas estimation failed.";
   }
 
   // 9. Short message or trimmed message

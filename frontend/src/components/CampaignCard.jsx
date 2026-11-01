@@ -6,7 +6,7 @@ import {
   formatTimeRemaining,
   formatDate,
 } from "../utils/formatters";
-import { BOHR_CHAIN_ID_DECIMAL } from "../contracts/config";
+import { BOHR_CHAIN_ID_DECIMAL, NETWORK_SHORT_NAME } from "../contracts/config";
 
 export default function CampaignCard({
   campaign,
@@ -176,7 +176,7 @@ export default function CampaignCard({
                 className="btn btn-warning btn-block"
                 onClick={onSwitchNetwork}
               >
-                Switch to Bohr Testnet
+                Switch to {NETWORK_SHORT_NAME}
               </button>
             ) : (
               <form onSubmit={submitContribution} className="contribute-form">

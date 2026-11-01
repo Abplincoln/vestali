@@ -111,7 +111,7 @@ export default function CreateCampaignModal({
               <span className="input-addon">BOT</span>
             </div>
             <small className="form-hint">
-              Target amount in native BOT on Bohr Testnet.
+              Target amount in native BOT.
             </small>
           </div>
 
@@ -180,7 +180,7 @@ export default function CreateCampaignModal({
               className="btn btn-primary"
               disabled={isPending}
             >
-              {isPending ? "Creating on Bohr..." : "Deploy Campaign"}
+              {isPending ? "Creating on-chain..." : "Deploy Campaign"}
             </button>
           </div>
         </form>

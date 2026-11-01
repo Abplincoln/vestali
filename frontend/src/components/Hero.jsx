@@ -1,5 +1,11 @@
 import React from "react";
 import { formatBOT } from "../utils/formatters";
+import {
+  NETWORK_NAME,
+  BOHR_CHAIN_ID_DECIMAL,
+  IS_MAINNET,
+  NETWORK_EXPLORER_URL,
+} from "../contracts/config";
 
 export default function Hero({ campaigns, onOpenCreateModal, onConnect, account }) {
   const totalCampaigns = campaigns.length;
@@ -16,7 +22,7 @@ export default function Hero({ campaigns, onOpenCreateModal, onConnect, account 
       <div className="hero-content">
         <div className="hero-badge">
           <span className="badge-pulse"></span>
-          <span>BOT Chain Bohr Testnet (Chain ID: 968)</span>
+          <span>{NETWORK_NAME} (Chain ID: {BOHR_CHAIN_ID_DECIMAL})</span>
         </div>
 
         <h1 className="hero-heading">
@@ -24,10 +30,10 @@ export default function Hero({ campaigns, onOpenCreateModal, onConnect, account 
         </h1>
 
         <p className="hero-description">
-          Vestali is a transparent, trustless crowdfunding platform built on
-          BOT Chain Bohr Testnet. Support community initiatives with native BOT,
-          track funding milestones in real time, and enjoy safe refunds if a
-          campaign falls short of its goal.
+          Vestali is a transparent, trustless crowdfunding platform built on{" "}
+          {NETWORK_NAME}. Support community initiatives with native BOT, track
+          funding milestones in real time, and enjoy safe refunds if a campaign
+          falls short of its goal.
         </p>
 
         <div className="hero-actions">
@@ -38,14 +44,25 @@ export default function Hero({ campaigns, onOpenCreateModal, onConnect, account 
           >
             {account ? "Start a Campaign" : "Connect & Start Campaign"}
           </button>
-          <a
-            href="https://faucet.botchain.ai/basic"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary btn-lg"
-          >
-            Get Testnet BOT ↗
-          </a>
+          {!IS_MAINNET ? (
+            <a
+              href="https://faucet.botchain.ai/basic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary btn-lg"
+            >
+              Get Testnet BOT ↗
+            </a>
+          ) : (
+            <a
+              href={NETWORK_EXPLORER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary btn-lg"
+            >
+              Explorer ↗
+            </a>
+          )}
         </div>
       </div>
 

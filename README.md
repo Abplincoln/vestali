@@ -2,18 +2,27 @@
 
 > **Good ideas grow together.**
 
-Vestali is a lightweight, transparent, and secure crowdfunding decentralized application (dApp) built on **BOT Chain Bohr Testnet**. It enables creators to raise capital for projects in native BOT tokens with automated milestone accounting, safe creator withdrawals upon goal completion, and guaranteed 100% contributor refunds if a campaign expires without reaching its target.
+Vestali is a lightweight, transparent, and secure crowdfunding decentralized application (dApp) built on **BOT Chain Mainnet** (with full compatibility preserved for BOT Chain Bohr Testnet). It enables creators to raise capital for projects in native BOT tokens with automated milestone accounting, safe creator withdrawals upon goal completion, and guaranteed 100% contributor refunds if a campaign expires without reaching its target.
 
 ---
 
-## 📌 Deployed Contract Details
+## 📌 Network & Contract Details
 
+### BOT Chain Mainnet (Primary)
+* **Network Name:** BOT Chain Mainnet
+* **Chain ID:** `677` (`0x2a5`)
+* **RPC Endpoint:** `https://rpc.botchain.ai`
+* **Native Currency:** `BOT`
+* **Block Explorer:** [https://scan.botchain.ai](https://scan.botchain.ai)
+* **Deployed Contract Address:** [`0x2848880b86b43A159c9Ed11202E6925Cc267e85D`](https://scan.botchain.ai/address/0x2848880b86b43A159c9Ed11202E6925Cc267e85D)
+
+### BOT Chain Bohr Testnet (Preserved)
 * **Network Name:** BOT Chain Bohr Testnet
 * **Chain ID:** `968` (`0x3c8`)
 * **RPC Endpoint:** `https://rpc.bohr.life`
 * **Currency Symbol:** `BOT`
 * **Testnet Faucet:** [https://faucet.botchain.ai/basic](https://faucet.botchain.ai/basic)
-* **Contract Address:** [`0x7c41CCE8C914312d53f4dC6D0c5b371625D12D22`](https://explorer.bohr.life)
+* **Deployed Contract Address:** [`0x7c41CCE8C914312d53f4dC6D0c5b371625D12D22`](https://explorer.bohr.life)
 
 ---
 
@@ -21,9 +30,9 @@ Vestali is a lightweight, transparent, and secure crowdfunding decentralized app
 
 1. **MetaMask Integration & Automatic Network Switching:**
    * One-click wallet connection.
-   * Prompts to switch to Bohr Testnet (Chain ID `968`) or automatically registers the network in MetaMask if not already added.
+   * Prompts to switch to BOT Chain Mainnet (Chain ID `677`) or automatically registers the network in MetaMask if not already added.
 2. **Campaign Discovery & Filtering:**
-   * Browse all campaigns in real time via Bohr Testnet RPC.
+   * Browse all campaigns in real time via BOT Chain RPC.
    * View title, description, creator address, target goal, total raised, progress percentage, and time remaining.
    * Filter by status (*Active*, *Successful*, *Failed*) and personal activity (*Created by Me*, *My Contributions*).
    * Search campaigns by keyword.
@@ -123,12 +132,18 @@ http://localhost:5173
 ```
 
 ### Frontend Environment Configuration (Optional)
-The frontend is pre-configured with defaults for the deployed contract. If you wish to override them, edit `frontend/.env`:
+The frontend is pre-configured with defaults for the deployed mainnet contract. If you wish to override them, edit `frontend/.env`:
 
 ```env
-VITE_VESTALI_CONTRACT_ADDRESS=0x7c41CCE8C914312d53f4dC6D0c5b371625D12D22
-VITE_BOHR_RPC_URL=https://rpc.bohr.life
-VITE_BOHR_CHAIN_ID=968
+# BOT Chain Mainnet (Default)
+VITE_VESTALI_CONTRACT_ADDRESS=0x2848880b86b43A159c9Ed11202E6925Cc267e85D
+VITE_BOHR_RPC_URL=https://rpc.botchain.ai
+VITE_BOHR_CHAIN_ID=677
+
+# For BOT Chain Bohr Testnet (Alternative)
+# VITE_VESTALI_CONTRACT_ADDRESS=0x7c41CCE8C914312d53f4dC6D0c5b371625D12D22
+# VITE_BOHR_RPC_URL=https://rpc.bohr.life
+# VITE_BOHR_CHAIN_ID=968
 ```
 
 ---

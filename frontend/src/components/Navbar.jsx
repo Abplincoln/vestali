@@ -1,6 +1,6 @@
 import React from "react";
 import { shortenAddress, formatBOT } from "../utils/formatters";
-import { BOHR_CHAIN_ID_DECIMAL } from "../contracts/config";
+import { BOHR_CHAIN_ID_DECIMAL, NETWORK_SHORT_NAME } from "../contracts/config";
 
 export default function Navbar({
   account,
@@ -36,7 +36,7 @@ export default function Navbar({
             >
               <span className="network-dot"></span>
               <span className="network-name">
-                {isCorrectNetwork ? "Bohr Testnet" : "Wrong Network"}
+                {isCorrectNetwork ? NETWORK_SHORT_NAME : "Wrong Network"}
               </span>
               {!isCorrectNetwork && (
                 <button

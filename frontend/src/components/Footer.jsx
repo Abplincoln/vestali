@@ -1,5 +1,12 @@
 import React from "react";
-import { VESTALI_CONTRACT_ADDRESS, BOHR_CHAIN_ID_DECIMAL, BOHR_RPC_URL } from "../contracts/config";
+import {
+  VESTALI_CONTRACT_ADDRESS,
+  BOHR_CHAIN_ID_DECIMAL,
+  BOHR_RPC_URL,
+  IS_MAINNET,
+  NETWORK_NAME,
+  NETWORK_EXPLORER_URL,
+} from "../contracts/config";
 
 export default function Footer() {
   return (
@@ -15,13 +22,23 @@ export default function Footer() {
           </div>
 
           <div className="footer-links">
+            {!IS_MAINNET && (
+              <a
+                href="https://faucet.botchain.ai/basic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link"
+              >
+                Testnet Faucet ↗
+              </a>
+            )}
             <a
-              href="https://faucet.botchain.ai/basic"
+              href={NETWORK_EXPLORER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"
             >
-              Testnet Faucet ↗
+              Explorer ↗
             </a>
             <a
               href="https://dev-docs.botchain.ai/docs/Developers/json-rpc-endpoint/"
@@ -38,12 +55,26 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-contract-info">
-            <span><strong>Contract:</strong> <code>{VESTALI_CONTRACT_ADDRESS}</code></span>
+            <span>
+              <strong>Contract:</strong>{" "}
+              {VESTALI_CONTRACT_ADDRESS ? (
+                <a
+                  href={`${NETWORK_EXPLORER_URL}/address/${VESTALI_CONTRACT_ADDRESS}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "inherit", textDecoration: "underline" }}
+                >
+                  <code>{VESTALI_CONTRACT_ADDRESS}</code> ↗
+                </a>
+              ) : (
+                <code>Not configured</code>
+              )}
+            </span>
             <span><strong>Chain ID:</strong> {BOHR_CHAIN_ID_DECIMAL}</span>
             <span><strong>RPC:</strong> {BOHR_RPC_URL}</span>
           </div>
           <div className="footer-copyright">
-            Vestali &copy; {new Date().getFullYear()} — Built on BOT Chain Bohr Testnet
+            Vestali &copy; {new Date().getFullYear()} — Built on {NETWORK_NAME}
           </div>
         </div>
       </div>
