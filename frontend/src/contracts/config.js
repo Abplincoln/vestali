@@ -5,6 +5,7 @@ export const MAINNET_CHAIN_ID_DECIMAL = 677;
 export const MAINNET_RPC_URL = "https://rpc.botchain.ai";
 export const MAINNET_EXPLORER_URL = "https://scan.botchain.ai";
 export const MAINNET_CONTRACT_ADDRESS = "0x2848880b86b43A159c9Ed11202E6925Cc267e85D";
+export const BOTCHAIN_WEBSITE_URL = "https://botchain.ai";
 
 // BOT Chain Bohr Testnet Configuration (Preserved)
 export const TESTNET_CHAIN_ID_DECIMAL = 968;
@@ -29,7 +30,7 @@ export const NETWORK_NAME = IS_MAINNET
   ? "BOT Chain Mainnet"
   : "BOT Chain Bohr Testnet";
 
-export const NETWORK_SHORT_NAME = IS_MAINNET ? "BOT Mainnet" : "Bohr Testnet";
+export const NETWORK_SHORT_NAME = IS_MAINNET ? "BOT Chain" : "Bohr Testnet";
 
 export const NETWORK_EXPLORER_URL = IS_MAINNET
   ? MAINNET_EXPLORER_URL

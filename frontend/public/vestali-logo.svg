@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" fill="none">
+  <defs>
+    <linearGradient id="vestali-bg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="vestali-leaf" x1="12" y1="8" x2="28" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#D1FAE5" />
+    </linearGradient>
+    <linearGradient id="vestali-glow" x1="20" y1="0" x2="20" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#047857" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#vestali-bg)" />
+  <rect width="40" height="40" rx="10" stroke="#34D399" stroke-width="1" stroke-opacity="0.3" />
+  <rect width="40" height="40" rx="10" fill="url(#vestali-glow)" />
+  <!-- Sprout Stem & Leaves -->
+  <path d="M20 30V17" stroke="url(#vestali-leaf)" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M20 22C15.5 22 12.5 18 12.5 14C16.5 14 20 16.5 20 22Z" fill="url(#vestali-leaf)" />
+  <path d="M20 18C24 18 27.5 14.5 27.5 10.5C23.5 10.5 20 13 20 18Z" fill="url(#vestali-leaf)" />
+  <!-- Growth Arc -->
+  <path d="M12 31C14.5 32.2 17.2 32.8 20 32.8C22.8 32.8 25.5 32.2 28 31" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+</svg>

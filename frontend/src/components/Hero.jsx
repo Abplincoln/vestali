@@ -5,6 +5,7 @@ import {
   BOHR_CHAIN_ID_DECIMAL,
   IS_MAINNET,
   NETWORK_EXPLORER_URL,
+  BOTCHAIN_WEBSITE_URL,
 } from "../contracts/config";
 
 export default function Hero({ campaigns, onOpenCreateModal, onConnect, account }) {
@@ -21,8 +22,17 @@ export default function Hero({ campaigns, onOpenCreateModal, onConnect, account 
     <section className="hero-section">
       <div className="hero-content">
         <div className="hero-badge">
+          <img
+            src="/botchain-icon.svg"
+            alt="BOT Chain Logo"
+            className="hero-badge-logo"
+            width="18"
+            height="18"
+          />
           <span className="badge-pulse"></span>
-          <span>{NETWORK_NAME} (Chain ID: {BOHR_CHAIN_ID_DECIMAL})</span>
+          <span>
+            Built on <strong>BOT Chain</strong> ({IS_MAINNET ? "Mainnet" : "Bohr Testnet"} &bull; Chain ID: {BOHR_CHAIN_ID_DECIMAL})
+          </span>
         </div>
 
         <h1 className="hero-heading">
@@ -31,7 +41,7 @@ export default function Hero({ campaigns, onOpenCreateModal, onConnect, account 
 
         <p className="hero-description">
           Vestali is a transparent, trustless crowdfunding platform built on{" "}
-          {NETWORK_NAME}. Support community initiatives with native BOT, track
+          <strong className="text-highlight">BOT Chain</strong>. Support community initiatives with native BOT, track
           funding milestones in real time, and enjoy safe refunds if a campaign
           falls short of its goal.
         </p>
@@ -44,25 +54,22 @@ export default function Hero({ campaigns, onOpenCreateModal, onConnect, account 
           >
             {account ? "Start a Campaign" : "Connect & Start Campaign"}
           </button>
-          {!IS_MAINNET ? (
-            <a
-              href="https://faucet.botchain.ai/basic"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary btn-lg"
-            >
-              Get Testnet BOT ↗
-            </a>
-          ) : (
-            <a
-              href={NETWORK_EXPLORER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary btn-lg"
-            >
-              Explorer ↗
-            </a>
-          )}
+          <a
+            href={NETWORK_EXPLORER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-secondary btn-lg"
+          >
+            BOT Chain Explorer ↗
+          </a>
+          <a
+            href={BOTCHAIN_WEBSITE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-secondary btn-lg"
+          >
+            botchain.ai ↗
+          </a>
         </div>
       </div>
 

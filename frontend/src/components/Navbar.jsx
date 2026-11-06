@@ -1,6 +1,10 @@
 import React from "react";
 import { shortenAddress, formatBOT } from "../utils/formatters";
-import { BOHR_CHAIN_ID_DECIMAL, NETWORK_SHORT_NAME } from "../contracts/config";
+import {
+  BOHR_CHAIN_ID_DECIMAL,
+  NETWORK_SHORT_NAME,
+  BOTCHAIN_WEBSITE_URL,
+} from "../contracts/config";
 
 export default function Navbar({
   account,
@@ -16,13 +20,43 @@ export default function Navbar({
   return (
     <header className="navbar">
       <div className="navbar-container">
-        {/* Brand */}
-        <div className="navbar-brand">
-          <div className="brand-logo-icon">🌱</div>
-          <div className="brand-text">
-            <div className="brand-title">Vestali</div>
-            <div className="brand-tagline">Good ideas grow together.</div>
+        {/* Brand with Vestali Logo and Built on BOT Chain Badge */}
+        <div className="navbar-brand-group">
+          <div className="navbar-brand">
+            <img
+              src="/vestali-logo.svg"
+              alt="Vestali Logo"
+              className="brand-logo-img"
+              width="38"
+              height="38"
+            />
+            <div className="brand-text">
+              <div className="brand-title">Vestali</div>
+              <div className="brand-tagline">Good ideas grow together.</div>
+            </div>
           </div>
+
+          <div className="navbar-ecosystem-divider" aria-hidden="true"></div>
+
+          <a
+            href={BOTCHAIN_WEBSITE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="navbar-botchain-badge"
+            title="Built on BOT Chain (Official Website)"
+          >
+            <span className="botchain-badge-pill">
+              <span className="botchain-badge-sub">Built on</span>
+              <img
+                src="/botchain-icon.svg"
+                alt="BOT Chain Logo"
+                className="botchain-badge-icon"
+                width="18"
+                height="18"
+              />
+              <strong className="botchain-badge-name">BOT Chain</strong>
+            </span>
+          </a>
         </div>
 
         {/* Actions */}
@@ -34,6 +68,13 @@ export default function Navbar({
                 isCorrectNetwork ? "network-badge-correct" : "network-badge-wrong"
               }`}
             >
+              <img
+                src="/botchain-icon.svg"
+                alt="BOT Chain"
+                className="network-badge-icon"
+                width="14"
+                height="14"
+              />
               <span className="network-dot"></span>
               <span className="network-name">
                 {isCorrectNetwork ? NETWORK_SHORT_NAME : "Wrong Network"}
